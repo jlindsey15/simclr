@@ -301,7 +301,7 @@ def crop_and_resize(image, height, width):
       image,
       bbox,
       min_object_covered=0.1,
-      aspect_ratio_range=(3. / 4 * aspect_ratio, 4. / 3. * aspect_ratio),
+      aspect_ratio_range=(4. / 4. * aspect_ratio, 4. / 4. * aspect_ratio),
       area_range=(0.08, 1.0),
       max_attempts=100,
       scope=None)
@@ -443,10 +443,10 @@ def preprocess_for_train(image, height, width,
   """
   if crop:
     image = random_crop_with_resize(image, height, width)
-  if flip:
-    image = tf.image.random_flip_left_right(image)
-  if color_distort:
-    image = random_color_jitter(image)
+  #if flip:
+  #  image = tf.image.random_flip_left_right(image)
+  #if color_distort:
+  #  image = random_color_jitter(image)
   image = tf.reshape(image, [height, width, 3])
   image = tf.clip_by_value(image, 0., 1.)
   return image

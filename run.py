@@ -203,7 +203,7 @@ flags.DEFINE_integer(
     'Number of head projection dimension.')
 
 flags.DEFINE_integer(
-    'num_proj_layers', 3,
+    'num_proj_layers', 2,
     'Number of non-linear head layers.')
 
 flags.DEFINE_integer(
@@ -240,7 +240,7 @@ flags.DEFINE_float(
     'The strength of color jittering.')
 
 flags.DEFINE_boolean(
-    'use_blur', True,
+    'use_blur', False,
     'Whether or not to use Gaussian blur for augmentation during pretraining.')
 
 
@@ -355,7 +355,7 @@ def main(argv):
 
 
   builder = tfds.builder(FLAGS.dataset, data_dir=FLAGS.data_dir)
-  builder.download_and_prepare()
+  #builder.download_and_prepare()
   num_train_examples = builder.info.splits[FLAGS.train_split].num_examples
   num_eval_examples = builder.info.splits[FLAGS.eval_split].num_examples
   num_classes = builder.info.features['label'].num_classes
